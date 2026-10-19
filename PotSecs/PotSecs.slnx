@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/sln/" />
+  <Folder Name="/sln/documents/" />
+  <Folder Name="/sln/documents/startupDesign/">
+    <File Path="documents/startupDesign/startupDesign.md" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="src/tests/PotSecs.Core.test/PotSecs.Core.test.csproj" Id="295830c0-bced-4858-af82-fc443b542a74" />
   </Folder>
