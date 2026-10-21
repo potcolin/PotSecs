@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PotSecs.Stocker.wpf
+namespace PotSecs.Device.AOI.wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

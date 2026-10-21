@@ -1,7 +1,7 @@
-﻿<Application x:Class="PotSecs.Stocker.wpf.App"
+﻿<Application x:Class="PotSecs.Device.AOI.wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PotSecs.Stocker.wpf"
+             xmlns:local="clr-namespace:PotSecs.Device.AOI.wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

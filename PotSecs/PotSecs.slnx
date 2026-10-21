@@ -8,8 +8,10 @@
   <Folder Name="/tests/">
     <Project Path="src/tests/PotSecs.Core.test/PotSecs.Core.test.csproj" Id="295830c0-bced-4858-af82-fc443b542a74" />
   </Folder>
+  <Project Path="src/PotSecs.Core.Ref/PotSecs.Core.Ref.csproj" Id="6c935a89-4a72-4ca6-9bdc-7a71423b911a" />
   <Project Path="src/PotSecs.Core.Startup/PotSecs.Core.Startup.csproj" Id="b9fdc183-29ca-40b9-9f92-f46e564a000d" />
   <Project Path="src/PotSecs.Core/PotSecs.Core.csproj" />
+  <Project Path="src/PotSecs.Device.AOI.wpf/PotSecs.Device.AOI.wpf.csproj" Id="2c74819d-f587-487c-ad21-40060f68e6e1" />
+  <Project Path="src/PotSecs.Device.Stocker.wpf/PotSecs.Device.Stocker.wpf.csproj" Id="fb748ba8-c309-4799-8508-6ff09955b23a" />
   <Project Path="src/PotSecs.Simulator/PotSecs.Simulator.csproj" />
-  <Project Path="src/PotSecs.Stocker.wpf/PotSecs.Stocker.wpf.csproj" />
 </Solution>

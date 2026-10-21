@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace PotSecs.Stocker.wpf
+namespace PotSecs.Device.Stocker.wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml
