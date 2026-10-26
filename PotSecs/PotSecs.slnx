@@ -8,6 +8,7 @@
   <Folder Name="/tests/">
     <Project Path="src/tests/PotSecs.Core.test/PotSecs.Core.test.csproj" Id="295830c0-bced-4858-af82-fc443b542a74" />
   </Folder>
+  <Project Path="PotSecs.Core.wpf.prism/PotSecs.Core.wpf.prism.csproj" Id="0c2ba892-0ece-44f3-881d-d4700b73182a" />
   <Project Path="src/PotSecs.Core.Ref/PotSecs.Core.Ref.csproj" Id="6c935a89-4a72-4ca6-9bdc-7a71423b911a" />
   <Project Path="src/PotSecs.Core.Startup/PotSecs.Core.Startup.csproj" Id="b9fdc183-29ca-40b9-9f92-f46e564a000d" />
   <Project Path="src/PotSecs.Core/PotSecs.Core.csproj" />
