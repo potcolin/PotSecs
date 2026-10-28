@@ -11,7 +11,6 @@ namespace PotSecs.Simulator.ViewModels
         public MainWindowViewModel(IMessageService messageService)
         {
             this.MessageService = messageService;
-            this.Title = $"{this.Title} 【{this.MessageService.GetWelcomeText()}】";
         }
 
         public string Title

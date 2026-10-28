@@ -9,27 +9,47 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="{Binding Title}" Height="450" Width="800">
-    <avalonDock:DockingManager>
-        <avalonDock:DockingManager.Theme>
-            <themes:ArcLightTheme />
-        </avalonDock:DockingManager.Theme>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 菜单栏高度自适应 -->
+            <RowDefinition Height="*"/>
+            <!-- 停靠区域占满剩余空间 -->
+        </Grid.RowDefinitions>
 
-        <avalonDock:LayoutRoot>
-            <avalonDock:LayoutPanel Orientation="Horizontal">
-                <!-- 左侧：工具窗口（可隐藏） -->
-                <avalonDock:LayoutAnchorablePane DockWidth="200">
-                    <avalonDock:LayoutAnchorable Title="Solution Explorer" ContentId="explorer">
-                        <TextBlock Text="Tool Window Content" />
-                    </avalonDock:LayoutAnchorable>
-                </avalonDock:LayoutAnchorablePane>
+        <!-- 顶部菜单栏：标准 WPF Menu，与 AvalonDock 无关 -->
+        <Menu Grid.Row="0" Margin="3">
+            <MenuItem Header="文件(_F)">
+                <MenuItem Header="新建"/>
+                <MenuItem Header="打开"/>
+            </MenuItem>
+            <MenuItem Header="视图(_V)">
+                <MenuItem Header="解决方案资源管理器"/>
+            </MenuItem>
+        </Menu>
+        <avalonDock:DockingManager  Grid.Row="1">
+            <avalonDock:DockingManager.Theme>
+                <themes:ArcLightTheme />
+            </avalonDock:DockingManager.Theme>
 
-                <!-- 中间：文档区域（标签页） -->
-                <avalonDock:LayoutDocumentPane>
-                    <avalonDock:LayoutDocument Title="Document 1" ContentId="doc1">
-                        <TextBlock Text="Document Content" FontSize="24" />
-                    </avalonDock:LayoutDocument>
-                </avalonDock:LayoutDocumentPane>
-            </avalonDock:LayoutPanel>
-        </avalonDock:LayoutRoot>
-    </avalonDock:DockingManager>
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <!-- 左侧：工具窗口（可隐藏） -->
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Solution Explorer" ContentId="explorer">
+                            <TextBlock Text="Tool Window Content" />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+
+                    <!-- 中间：文档区域（标签页） -->
+                    <avalonDock:LayoutDocumentPane>
+                        <avalonDock:LayoutDocument Title="Document 1" ContentId="doc1">
+                            <TextBlock Text="Document Content" FontSize="24" />
+                        </avalonDock:LayoutDocument>
+                    </avalonDock:LayoutDocumentPane>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+    </Grid>
+       
 </Window>
