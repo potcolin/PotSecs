@@ -6,7 +6,7 @@ namespace PotSecs.Simulator.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private readonly IMessageService _messageService;
-        private string _title = "Simulator";
+        private string _title = "PotSecs/Simulator";
         private string _welcomeText;
 
         public MainWindowViewModel(IMessageService messageService)

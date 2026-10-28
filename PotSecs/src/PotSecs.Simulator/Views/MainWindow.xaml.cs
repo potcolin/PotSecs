@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PotSecs.Simulator
+namespace PotSecs.Simulator.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,5 +1,6 @@
 using System.Windows;
 using PotSecs.Simulator.ViewModels;
+using PotSecs.Simulator.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Mvvm;
