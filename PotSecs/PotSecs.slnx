@@ -2,6 +2,7 @@
   <Folder Name="/sln/" />
   <Folder Name="/sln/documents/" />
   <Folder Name="/sln/documents/startupDesign/">
+    <File Path="documents/AIadvices/AIadvices.md" />
     <File Path="documents/startupDesign/startupDesign.docx" />
     <File Path="documents/startupDesign/startupDesign.md" />
   </Folder>
