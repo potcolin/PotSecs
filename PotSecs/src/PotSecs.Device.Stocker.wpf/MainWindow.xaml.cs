@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Secs4Net;
 using Secs4Net.Sml;
+using Serilog;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,34 +19,29 @@ namespace PotSecs.Device.Stocker.wpf
     internal sealed class ConsoleSecsLogger : ISecsGemLogger
     {
         public void MessageIn(SecsMessage msg, int id)
-            => Console.WriteLine(
-                $"<-- [0x{id:X8}] {msg.ToSml()}");
+            => Log.Information($"<-- [0x{id:X8}] {msg.ToSml()}");
 
         public void MessageOut(SecsMessage msg, int id)
-            => Console.WriteLine(
-                $"--> [0x{id:X8}] {msg.ToSml()}");
+            => Log.Information($"--> [0x{id:X8}] {msg.ToSml()}");
 
         public void Debug(string msg)
-            => Console.WriteLine($"[DEBUG] {msg}");
+            => Log.Information($"[DEBUG] {msg}");
 
         public void Info(string msg)
-            => Console.WriteLine($"[INFO] {msg}");
+            => Log.Information($"[INFO] {msg}");
 
         public void Warning(string msg)
-            => Console.WriteLine($"[WARN] {msg}");
+            => Log.Information($"[WARN] {msg}");
 
-        public void Error(
-            string msg,
-            SecsMessage? message,
-            Exception? ex)
+        public void Error(string msg, SecsMessage? message, Exception? ex)
         {
-            Console.WriteLine($"[ERROR] {msg}");
+            Log.Information($"[ERROR] {msg}");
 
             if (message is not null)
-                Console.WriteLine(message.ToSml());
+                Log.Information(message.ToSml());
 
             if (ex is not null)
-                Console.WriteLine(ex);
+                Log.Information(ex, "exception happened.");
         }
     }
     /// <summary>
@@ -61,11 +57,11 @@ namespace PotSecs.Device.Stocker.wpf
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
 
             var options = Options.Create(new SecsGemOptions
             {
-                IsActive = false,       // 被动模式：等待 EAP 连接
+                IsActive = false,       // 被动模式/passive：等待 EAP 连接
                 IpAddress = "0.0.0.0",  // 监听本机所有 IPv4 网卡
                 Port = 5000,            // 必须与 EAP 配置一致
                 DeviceId = 0,
@@ -86,13 +82,12 @@ namespace PotSecs.Device.Stocker.wpf
 
             connection.ConnectionChanged += delegate
             {
-                Console.WriteLine($"HSMS 状态：{connection.State}");
+                Log.Information($"HSMS state ：{connection.State}");
             };
 
-            // 开始监听，等待 EAP 建立 TCP/HSMS 连接
             connection.Start(cts.Token);
 
-            Console.WriteLine("等待 EAP 连接，按 Ctrl+C 退出。");
+            Log.Information("waiting for EAP connection. press Ctrl+C to exit.");
 
             try
             {
@@ -101,15 +96,13 @@ namespace PotSecs.Device.Stocker.wpf
                 {
                     using var primary = wrapper.PrimaryMessage;
 
-                    Console.WriteLine(
-                        $"收到 EAP 消息：S{primary.S}F{primary.F}");
+                    Log.Information($"receive EAP message：S{primary.S}F{primary.F}");
 
                     // 输出消息的基本信息；需要 SML 格式时可使用
                     // Secs4Net.Sml 扩展 ToSml()。
 
                     if (primary.S == 1 && primary.F == 1)
                     {
-                        // S1F1 的标准应答 S1F2。
                         using var reply = new SecsMessage(1, 2)
                         {
                             SecsItem = L(
@@ -118,18 +111,17 @@ namespace PotSecs.Device.Stocker.wpf
                         };
 
                         await wrapper.TryReplyAsync(reply, cts.Token);
-                        Console.WriteLine("已回复 S1F2");
+                        Log.Information("replay S1F2");
                     }
                     else
                     {
-                        Console.WriteLine(
-                            $"暂未实现 S{primary.S}F{primary.F} 的业务处理");
+                        Log.Information($"Business processing for S{primary.S}F{primary.F} is not implemented yet.");
                     }
                 }
             }
             catch (OperationCanceledException)
             {
-                Console.WriteLine("监听已停止。");
+                Log.Information("Listening stopped.");
             }
         }
     }

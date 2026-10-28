@@ -21,11 +21,9 @@ namespace PotSecs.Core.Services
             {
                 using var reply = await secsGem.SendAsync(request, new CancellationToken());
 
-                Console.WriteLine($"收到应答：{reply}");
             }
             catch (SecsException ex)
             {
-                Console.WriteLine($"SECS 通信异常：{ex.Message}");
             }
         }
     }
